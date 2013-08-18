@@ -116,3 +116,32 @@ class SymfonyLoader extends Loader
     }
 
 }
+
+class ComposerLoader extends Loader
+{
+    public $name = 'composer';
+
+    public function assertDir($dir)
+    {
+        return is_file("$dir/vendor/autoload.php");
+    }
+
+    public function initialize($boris, $dir)
+    {
+        if(is_file("$dir/composer.json")){
+            $config = json_decode(file_get_contents("$dir/composer.json"), true);
+             if(isset($config['name'])){
+                $this->name = $config['name'];
+            }
+        }
+
+        parent::initialize($boris, $dir);
+
+        $loader = require "$dir/vendor/autoload.php";
+
+        $boris->onStart(function ($worker, $vars) use ($loader) {
+            $worker->setLocal('loader', $loader);
+        });
+    }
+
+}
