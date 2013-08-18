@@ -123,11 +123,16 @@ class ComposerLoader extends Loader
 
     public function assertDir($dir)
     {
-        return is_file("$dir/vendor/autoload.php");
+        return is_file("$dir/composer.json");
     }
 
     public function initialize($boris, $dir)
     {
+        if(!is_file("$dir/vendor/autoload.php")){
+            echo "A composer.json file exists but vendor dir does not. Try running composer install.\n";
+            die();
+        }
+
         if(is_file("$dir/composer.json")){
             $config = json_decode(file_get_contents("$dir/composer.json"), true);
              if(isset($config['name'])){
