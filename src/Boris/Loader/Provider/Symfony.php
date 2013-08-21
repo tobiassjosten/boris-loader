@@ -19,7 +19,7 @@ class Symfony extends AbstractProvider
         require "$dir/app/bootstrap.php.cache";
         require_once "$dir/app/AppKernel.php";
 
-        $kernel = new AppKernel('dev', true);
+        $kernel = new \AppKernel('dev', true);
         $kernel->loadClassCache();
         $kernel->boot();
 
