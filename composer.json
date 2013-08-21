@@ -1,0 +1,24 @@
+{
+    "name": "tobiassjosten/boris-loader",
+    "description": "Loads project specific contexts into Boris REPL",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tobias Sjösten",
+            "email": "tobias@tobiassjosten.net"
+        }
+    ],
+    "require": {
+        "d11wtq/boris": "1.*"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.8.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Boris\\Loader\\Test": "tests",
+            "Boris\\Loader": "src"
+        }
+    },
+    "minimum-stability": "stable"
+}

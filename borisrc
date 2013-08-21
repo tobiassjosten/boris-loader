@@ -1,5 +1,0 @@
-<?php
-# vim:ft=php
-
-require '.borislib';
-loadBoris($boris, array(new DrupalLoader(), new SymfonyLoader()));
