@@ -16,8 +16,6 @@ class EzPublish extends AbstractProvider
     {
         parent::initialize($boris, $dir);
 
-        putenv("EZPUBLISH_SITEACCESS=fr");
-
         require "$dir/ezpublish/bootstrap.php.cache";
         require_once "$dir/ezpublish/EzPublishKernel.php";
 
