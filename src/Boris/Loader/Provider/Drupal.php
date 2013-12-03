@@ -28,6 +28,9 @@ class Drupal extends AbstractProvider
         );
         $kernel->boot();
 
+        $request = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
+        \Drupal::getContainer()->set('request', $request);
+
         drupal_bootstrap(DRUPAL_BOOTSTRAP_CODE);
 
         $boris->onStart(function ($worker, $vars) use ($kernel) {
