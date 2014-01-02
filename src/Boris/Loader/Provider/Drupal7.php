@@ -21,6 +21,8 @@ class Drupal7 extends AbstractProvider
 
         require_once "$dir/includes/bootstrap.inc";
 
+        drupal_override_server_variables();
+
         drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
     }
 }
