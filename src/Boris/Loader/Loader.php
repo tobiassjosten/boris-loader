@@ -6,12 +6,8 @@ class Loader
 {
     public static function load(\Boris\Boris $boris, array $providers = null)
     {
-        if (null === $providers) {
-            $providers = array(
-                new Provider\Drupal(),
-                new Provider\Symfony(),
-                new Provider\Composer(), // Fallback last.
-            );
+        if (!$providers) {
+            $providers = array(new Provider\Composer());
         }
 
         foreach ($providers as $provider) {

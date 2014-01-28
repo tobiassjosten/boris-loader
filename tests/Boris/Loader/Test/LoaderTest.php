@@ -27,4 +27,15 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
 
         \Boris\Loader\Loader::load($boris, array($provider));
     }
+
+    public function testDefaultProvider()
+    {
+        $boris = M::mock('\Boris\Boris');
+        $boris->shouldReceive('setPrompt')->with('test-works> ')->times(1);
+        $boris->shouldReceive('onStart')->times(1);
+
+        chdir(__DIR__.'/Provider/Composer');
+
+        \Boris\Loader\Loader::load($boris);
+    }
 }
