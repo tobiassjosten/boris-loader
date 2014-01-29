@@ -4,5 +4,11 @@ php:
   - 5.3
   - 5.4
 
+env:
+  - PHPUNIT_CONFIG="phpunit.xml"
+  - PHPUNIT_CONFIG="phpunit.bootstrapless.xml"
+
 before_script:
   - composer install --dev --prefer-source
+
+script: "[ -f $PHPUNIT_CONFIG ] && phpunit -c $PHPUNIT_CONFIG || phpunit -c $PHPUNIT_CONFIG.dist"
