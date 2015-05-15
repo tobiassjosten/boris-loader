@@ -17,7 +17,7 @@ class Drupal8 extends AbstractProvider
 
         $classloader = require_once $dir .'/core/vendor/autoload.php';
         $request = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
-        $kernel = new \Drupal\Core\DrupalKernel::createFromRequest($request, $classloader, 'dev');
+        $kernel = \Drupal\Core\DrupalKernel::createFromRequest($request, $classloader, 'dev');
         $kernel->boot();
         $kernel->prepareLegacyRequest($request);
         \Drupal::getContainer()->set('request', $request);
