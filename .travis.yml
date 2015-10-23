@@ -1,14 +1,16 @@
 language: php
 
 php:
-  - 5.3
-  - 5.4
+  - 5.6
+  - 7.0
+  - hhvm
 
 env:
   - PHPUNIT_CONFIG="phpunit.xml"
   - PHPUNIT_CONFIG="phpunit.bootstrapless.xml"
 
 before_script:
+  - composer self-update
   - composer install --dev --prefer-source
 
-script: "[ -f $PHPUNIT_CONFIG ] && phpunit -c $PHPUNIT_CONFIG || phpunit -c $PHPUNIT_CONFIG.dist"
+script: "[ -f $PHPUNIT_CONFIG ] && ./vendor/bin/phpunit -c $PHPUNIT_CONFIG || ./vendor/bin/phpunit -c $PHPUNIT_CONFIG.dist"
