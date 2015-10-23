@@ -8,7 +8,10 @@ class Symfony2 extends AbstractProvider
 
     public function assertDir($dir)
     {
-        return is_file("$dir/app/bootstrap.php.cache")
+        return  (
+                    is_file("$dir/app/bootstrap.php.cache") ||
+                    is_file("$dir/app/autoload.php")
+                )
             && is_file("$dir/app/AppKernel.php");
     }
 
@@ -16,7 +19,11 @@ class Symfony2 extends AbstractProvider
     {
         parent::initialize($boris, $dir);
 
-        require "$dir/app/bootstrap.php.cache";
+        if(is_file("$dir/app/bootstrap.php.cache")) {
+            require "$dir/app/bootstrap.php.cache";
+        } else {
+            require "$dir/app/autoload.php";
+        }
         require_once "$dir/app/AppKernel.php";
 
         $kernel = new \AppKernel('dev', true);
