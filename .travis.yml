@@ -10,6 +10,7 @@ env:
   - PHPUNIT_CONFIG="phpunit.bootstrapless.xml"
 
 before_script:
+  - composer self-update
   - composer install --dev --prefer-source
 
 script: "[ -f $PHPUNIT_CONFIG ] && ./vendor/bin/phpunit -c $PHPUNIT_CONFIG || ./vendor/bin/phpunit -c $PHPUNIT_CONFIG.dist"
