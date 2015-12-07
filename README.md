@@ -31,8 +31,9 @@ By default, boris-loader will try to load any [Composer](https://getcomposer.org
 - [eZ Publish](http://ez.no/): \Boris\Loader\Provider\EzPublish().
 - [Symfony2](http://symfony.com/): \Boris\Loader\Provider\Symfony2().
 
-### Symfony2 Provider Environment and Debug
-You can optionally pass the configuration environment name and debug mode to the Symfony2 provider as arguments. The arguments default to 'dev' environment and true for debug mode.
+
+### Symfony2 provider optional arguments
+You can optionally pass the Symfony environment name and debug mode to the Symfony2 provider as arguments. The arguments default to 'dev' environment and true for debug mode.
 
     <?php
     require __DIR__.'/../../../../boris-loader.php';
