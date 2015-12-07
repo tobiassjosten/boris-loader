@@ -30,3 +30,14 @@ By default, boris-loader will try to load any [Composer](https://getcomposer.org
 - [Drupal 8](https://drupal.org/): \Boris\Loader\Provider\Drupal8().
 - [eZ Publish](http://ez.no/): \Boris\Loader\Provider\EzPublish().
 - [Symfony2](http://symfony.com/): \Boris\Loader\Provider\Symfony2().
+
+### Symfony2 Provider Environment and Debug
+You can optionally pass the configuration environment name and debug mode to the Symfony2 provider as arguments. The arguments default to 'dev' environment and true for debug mode.
+
+    <?php
+    require __DIR__.'/../../../../boris-loader.php';
+    \Boris\Loader\Loader::load($boris, array(
+        new \Boris\Loader\Provider\Symfony2('prod', false),
+    ));
+    
+See [this document](symfony2_env_vars.md) for an example of using ENV vars to make this dynamic in your ~/.borisrc
