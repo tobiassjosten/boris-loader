@@ -36,7 +36,7 @@ class Symfony2 extends AbstractProvider
         }
         require_once "$dir/app/AppKernel.php";
 
-        $kernel = new \AppKernel($this->env, $debug);
+        $kernel = new \AppKernel($this->env, $this->debug);
         $kernel->loadClassCache();
         $kernel->boot();
 
