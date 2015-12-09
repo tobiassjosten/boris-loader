@@ -5,6 +5,16 @@ namespace Boris\Loader\Provider;
 class Symfony2 extends AbstractProvider
 {
     public $name = 'symfony';
+    
+    private $env;
+    
+    private $debug;
+    
+    public function __construct($environment = 'dev', $debug = true)
+    {
+        $this->env = $environment;
+        $this->debug = $debug;
+    }
 
     public function assertDir($dir)
     {
@@ -26,7 +36,7 @@ class Symfony2 extends AbstractProvider
         }
         require_once "$dir/app/AppKernel.php";
 
-        $kernel = new \AppKernel('dev', true);
+        $kernel = new \AppKernel($this->env, $this->debug);
         $kernel->loadClassCache();
         $kernel->boot();
 
