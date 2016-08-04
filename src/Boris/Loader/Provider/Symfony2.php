@@ -29,11 +29,14 @@ class Symfony2 extends AbstractProvider
     {
         parent::initialize($boris, $dir);
 
-        if(is_file("$dir/app/bootstrap.php.cache")) {
-            require "$dir/app/bootstrap.php.cache";
-        } else {
+        if(is_file("$dir/app/autoload.php")) {
             require "$dir/app/autoload.php";
         }
+
+        if(is_file("$dir/app/bootstrap.php.cache")) {
+            require "$dir/app/bootstrap.php.cache";
+        }
+		
         require_once "$dir/app/AppKernel.php";
 
         $kernel = new \AppKernel($this->env, $this->debug);
